@@ -1,8 +1,8 @@
 import { RegisterViewArgModel } from '../../model/arg/register/register-view-arg.model';
-import { ViewBuilder } from '../../builder/view.builder';
+import { ViewBuilderModel } from '../../model/builder/view-builder.model';
 
 export const registerViewDecorator = (arg: RegisterViewArgModel) => {
-  return (target: typeof ViewBuilder) => {
+  return (target: ViewBuilderModel) => {
     console.log(arg, target);
   };
 };

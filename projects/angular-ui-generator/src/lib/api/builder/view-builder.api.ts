@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { registerViewDtoStore } from '../store/register-view-dto.store';
+import { ViewBuilderModel } from '../../model/builder/view-builder.model';
 
 @Component({
   selector: 'lib-view-builder',
   template: '',
 })
-export abstract class ViewBuilder implements OnInit {
+export abstract class ViewBuilder implements OnInit, ViewBuilderModel {
   ngOnInit() {
-    console.log(registerViewDtoStore);
     this.build();
   }
 
