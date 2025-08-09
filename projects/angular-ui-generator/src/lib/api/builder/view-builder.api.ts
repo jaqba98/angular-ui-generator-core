@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewBuilderModel } from '../../model/builder/view-builder.model';
+import { ViewBuilderAbstract } from '../../abstract/view-builder.abstract';
 
 @Component({
   selector: 'lib-view-builder',
   template: '',
 })
-export abstract class ViewBuilder implements OnInit, ViewBuilderModel {
+export abstract class ViewBuilder implements OnInit, ViewBuilderAbstract {
   ngOnInit() {
     this.build();
   }
