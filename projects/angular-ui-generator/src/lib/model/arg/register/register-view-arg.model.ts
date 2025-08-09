@@ -1,6 +1,6 @@
-import {ViewBuilder} from '../../../builder/view.builder';
+import { ViewBuilder } from '../../../builder/view.builder';
 
 export interface RegisterViewArgModel {
   name: string;
-  children?: typeof ViewBuilder[];
+  children?: (typeof ViewBuilder)[];
 }

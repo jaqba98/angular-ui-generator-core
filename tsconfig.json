@@ -4,9 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "angular-ui-generator": [
-        "./dist/angular-ui-generator"
-      ]
+      "angular-ui-generator": ["./dist/angular-ui-generator"]
     },
     "strict": true,
     "noImplicitOverride": true,
