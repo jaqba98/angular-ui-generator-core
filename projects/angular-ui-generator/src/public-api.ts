@@ -1,2 +1,1 @@
-export * from './lib/builder/view.builder';
-export * from './lib/decorator/register-view.decorator';
+export * from './lib/api/register/register-view.api';
