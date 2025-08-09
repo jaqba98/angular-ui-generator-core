@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ViewBuilderAbstract } from '../../abstract/view-builder.abstract';
-import { registerViewStoreDto } from '../../store/register/register-view.store';
+import { GeneratorDtoModel } from '../../model/dto/generator/generator-dto.model';
 
 @Component({
   selector: 'lib-view-builder',
@@ -8,9 +9,8 @@ import { registerViewStoreDto } from '../../store/register/register-view.store';
 })
 export abstract class ViewBuilder implements OnInit, ViewBuilderAbstract {
   ngOnInit() {
-    console.log(registerViewStoreDto);
     this.build();
   }
 
-  abstract build(): void;
+  abstract build(): GeneratorDtoModel[];
 }
