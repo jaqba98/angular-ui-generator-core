@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
 import { ViewBuilderAbstract } from '../../abstract/view-builder.abstract';
-import { registerViewStoreDto } from '../../store/register/register-view.store';
+import { registerViewDomainBuilder } from '../../builder/domain/register-view-domain.builder';
 
 export const routesBuilder = (rootView: typeof ViewBuilderAbstract): Routes => {
-  console.log(rootView);
-  console.log(registerViewStoreDto);
+  const viewDomain = registerViewDomainBuilder(rootView);
+  console.log(viewDomain);
   return [];
 };
