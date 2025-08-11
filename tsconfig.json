@@ -6,7 +6,9 @@
     "baseUrl": ".",
     "paths": {
       "angular-ui-generator": ["./dist/angular-ui-generator"],
-      "angular-ui-generator/shared": ["./projects/angular-ui-generator/src/lib/shared/index.ts"]
+      "@angular-ui-generator/shared": [
+        "./projects/angular-ui-generator/src/lib/shared/index.ts"
+      ]
     },
     "strict": true,
     "noImplicitOverride": true,
