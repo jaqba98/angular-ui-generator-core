@@ -1,4 +1,4 @@
-import { RegisterViewArgModel } from '../../shared/model/arg/register-view-arg.model';
+import { RegisterViewArgModel } from '@angular-ui-generator/shared';
 import { registerViewDecorator } from '../decorator/register-view.decorator';
 
 export const RegisterView = (arg: RegisterViewArgModel) =>
