@@ -1,9 +1,9 @@
+import { Routes } from '@angular/router';
 import {
   RegisterViewDomainModel,
   registerViewDtoStore,
   TViewGenerator,
-} from '@angular-ui-generator/shared';
-import { Routes } from '@angular/router';
+} from '../../shared';
 
 export const routes = (view: TViewGenerator): Routes => {
   const viewDomain = test(view);

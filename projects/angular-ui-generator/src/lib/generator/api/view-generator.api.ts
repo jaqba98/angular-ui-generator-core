@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewGeneratorAbstract } from '@angular-ui-generator/shared';
+import { ViewGeneratorAbstract } from '../../shared';
 
 @Component({
   selector: 'lib-view-generator',

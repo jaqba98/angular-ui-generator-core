@@ -2,7 +2,7 @@ import {
   RegisterViewArgModel,
   registerViewDtoStore,
   TViewGenerator,
-} from '@angular-ui-generator/shared';
+} from '../../shared';
 
 export const registerViewDecorator = (arg: RegisterViewArgModel) => {
   return (target: TViewGenerator) => {
