@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewGeneratorAbstract } from '../../shared';
+import { ViewElement } from '../model/view-element';
 
 @Component({
   selector: 'lib-view-generator',
@@ -10,5 +11,5 @@ export abstract class ViewGenerator implements OnInit, ViewGeneratorAbstract {
     throw new Error('Method not implemented.');
   }
 
-  abstract generate(): void;
+  abstract generate(): ViewElement[];
 }
