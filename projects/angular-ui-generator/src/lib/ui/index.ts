@@ -1,1 +1,2 @@
-export * from './button/button.component';
+export * from './builder/button.builder';
+export * from './model/metadata/button-metadata.model';

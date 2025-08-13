@@ -5,8 +5,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { ViewGeneratorAbstract } from '../../shared';
-import { ViewElement } from '../model/view-element';
-import { ButtonComponent } from '../../ui';
+import { TViewElement } from '../model/view-element';
 
 @Component({
   selector: 'lib-view-generator',
@@ -20,10 +19,11 @@ export abstract class ViewGenerator
 
   ngAfterViewInit() {
     this.generator.clear();
-    this.generate().forEach(() => {
-      this.generator.createComponent(ButtonComponent);
+    this.generate().forEach((el) => {
+      const aa = this.generator.createComponent(el.component);
+      aa.instance.metadata.apply(el.metadata);
     });
   }
 
-  abstract generate(): ViewElement[];
+  abstract generate(): TViewElement[];
 }
