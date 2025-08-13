@@ -21,7 +21,7 @@ export abstract class ViewGenerator
     this.generator.clear();
     this.generate().forEach((el) => {
       const aa = this.generator.createComponent(el.component);
-      aa.instance.metadata.apply(el.metadata);
+      aa.instance.metadata().label = el.metadata.label;
     });
   }
 
