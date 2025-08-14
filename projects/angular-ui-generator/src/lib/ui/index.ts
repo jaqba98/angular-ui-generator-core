@@ -1,1 +1,1 @@
-export * from './api/ui-element';
+export * from './type/view-element';

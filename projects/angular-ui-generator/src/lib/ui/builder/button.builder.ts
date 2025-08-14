@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ButtonBuilderModel } from '../model/builder/button-builder.model';
-import { ButtonComponent } from '../control/button/button.component';
-import { ButtonMetadataModel } from '../model/metadata/button-metadata.model';
+import { ButtonComponent } from '../component/button/button.component';
 
 @Injectable({ providedIn: 'root' })
 export class ButtonBuilder {
-  static build(metadata: ButtonMetadataModel): ButtonBuilderModel {
+  static build(label: string): ButtonBuilderModel {
     return {
       component: ButtonComponent,
-      metadata,
+      metadata: {
+        label,
+      },
     };
   }
 }
