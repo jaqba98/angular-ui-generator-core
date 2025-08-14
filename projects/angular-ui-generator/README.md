@@ -1,64 +1,145 @@
-# AngularUiGenerator
+# Angular UI Generator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+`angular-ui-generator` is a powerful Angular tool designed to simplify the process of building UI elements dynamically within your Angular applications. This documentation provides a comprehensive guide on how to set up, use, and configure the tool.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Table of Contents
 
-```bash
-ng generate component component-name
-```
+1. [Installation](#installation)
+2. [Creating a Standard Angular Project](#creating-a-standard-angular-project)
+3. [Setting Up Angular UI Generator](#setting-up-angular-ui-generator)
+4. [Defining Views](#defining-views)
+5. [Available UI Components](#available-ui-components)
+6. [App Configuration](#app-configuration)
+7. [Example](#example)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## Installation
 
-## Building
-
-To build the library, run:
-
-```bash
-ng build angular-ui-generator
-```
-
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/angular-ui-generator
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+To install the `angular-ui-generator`, run the following command:
 
 ```bash
-ng test
+npm install angular-ui-generator
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Creating a Standard Angular Project
+
+Start by generating a standard Angular project using Angular CLI:
 
 ```bash
-ng e2e
+ng new my-app
+cd my-app
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Setting Up Angular UI Generator
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Once your Angular project is ready, install the generator:
+
+```bash
+npm install angular-ui-generator
+```
+
+Now you can start designing your application dynamically using the generator.
+
+---
+
+## Defining Views
+
+Views are the foundation of your application UI. Each view corresponds to a specific route in your Angular application.
+
+### Example View Component
+
+```typescript
+import { Component } from "@angular/core";
+import { RegisterView, ViewGenerator, UiElement, ButtonBuilder, ParagraphBuilder } from "angular-ui-generator";
+import { BViewComponent, CViewComponent } from "./child-views";
+
+@Component({
+  selector: "a-view",
+  template: "<ng-container #viewGenerator></ng-container>",
+})
+@RegisterView({
+  name: "a",
+  children: [BViewComponent, CViewComponent],
+})
+export class AViewComponent extends ViewGenerator {
+  override generate(): UiElement[] {
+    return [ButtonBuilder.build("button1"), ParagraphBuilder.build("paragraph1"), ButtonBuilder.build("button2")];
+  }
+}
+```
+
+### Explanation
+
+- **`@Component` decorator**: Required by Angular.
+- **`@RegisterView` decorator**: Marks the component as a view and defines its route and children.
+- **`ViewGenerator` inheritance**: Required to access the `generate` method.
+- **`generate()` method**: Returns an array of UI elements that will be rendered in the view.
+
+---
+
+## Available UI Components
+
+Currently, the following UI components are available for dynamic generation:
+
+- `ButtonBuilder.build(label: string)`
+- `ParagraphBuilder.build(label: string)`
+
+---
+
+## App Configuration
+
+To make your views functional, configure your app router in `app.config.ts`:
+
+```typescript
+import { ApplicationConfig } from "@angular/core";
+import { provideRouter } from "@angular/router";
+import { routesGenerator } from "angular-ui-generator";
+import { AViewComponent } from "./views/a-view.component";
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routesGenerator(AViewComponent))],
+};
+```
+
+### Explanation
+
+- **`provideRouter`**: Angular router provider.
+- **`routesGenerator`**: Generates all routes dynamically from your root view component.
+
+---
+
+## Example Usage
+
+Imagine an app with a simple homepage and nested child views:
+
+- Root View: `HomeViewComponent`
+- Children: `AboutViewComponent`, `ContactViewComponent`
+
+```typescript
+@Component({
+  selector: "home-view",
+  template: "<ng-container #viewGenerator></ng-container>",
+})
+@RegisterView({
+  name: "home",
+  children: [AboutViewComponent, ContactViewComponent],
+})
+export class HomeViewComponent extends ViewGenerator {
+  override generate(): UiElement[] {
+    return [ButtonBuilder.build("Get Started"), ParagraphBuilder.build("Welcome to our app!")];
+  }
+}
+```
+
+This setup will generate a homepage with a "Get Started" button and a welcome paragraph, while also providing nested routes for the `About` and `Contact` views.
+
+---
+
+With this configuration, your Angular project is ready to dynamically generate UI components using `angular-ui-generator`.
