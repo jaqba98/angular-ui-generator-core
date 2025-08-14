@@ -4,16 +4,13 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { ViewGeneratorAbstract } from '../../shared';
+import { UiElement } from '../../ui';
 
 @Component({
-  selector: 'lib-view-generator',
+  selector: 'lib-generator-api-view-generator',
   template: '',
 })
-export abstract class ViewGenerator
-  extends ViewGeneratorAbstract
-  implements AfterViewInit
-{
+export abstract class ViewGenerator implements AfterViewInit {
   @ViewChild('template', { read: ViewContainerRef })
   template!: ViewContainerRef;
 
@@ -29,4 +26,6 @@ export abstract class ViewGenerator
       newComponent.setInput('metadata', metadata);
     });
   }
+
+  abstract generate(): UiElement[];
 }
