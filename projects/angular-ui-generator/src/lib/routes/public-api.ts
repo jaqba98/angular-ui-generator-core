@@ -1,1 +1,1 @@
-export * from './api/routes.api';
+export * from './api/routes-generator';

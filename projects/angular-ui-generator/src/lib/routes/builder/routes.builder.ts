@@ -1,5 +1,5 @@
-import { Route, Routes } from '@angular/router';
 import { RoutesDomainModel } from '../model/routes-domain.model';
+import { Route, Routes } from '@angular/router';
 
 export const routesBuilder = (viewDomain: RoutesDomainModel): Routes => {
   const route: Route = {
