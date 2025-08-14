@@ -11,18 +11,14 @@ import { UiElement } from '../../ui';
   template: '',
 })
 export abstract class ViewGenerator implements AfterViewInit {
-  @ViewChild('template', { read: ViewContainerRef })
-  template!: ViewContainerRef;
-
-  static viewTemplate() {
-    return '<ng-content #template></ng-content>';
-  }
+  @ViewChild('viewGenerator', { read: ViewContainerRef })
+  viewGenerator!: ViewContainerRef;
 
   ngAfterViewInit() {
-    this.template.clear();
+    this.viewGenerator.clear();
     this.generate().forEach((uiElement) => {
       const { component, metadata } = uiElement;
-      const newComponent = this.template.createComponent(component);
+      const newComponent = this.viewGenerator.createComponent(component);
       newComponent.setInput('metadata', metadata);
     });
   }
