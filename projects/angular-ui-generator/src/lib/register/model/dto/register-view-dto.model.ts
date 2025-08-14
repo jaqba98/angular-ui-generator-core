@@ -1,6 +1,6 @@
 import { RegisterViewArgModel } from '../arg/register-view-arg.model';
-import { TViewGenerator } from '../../type/generator.type';
+import { ViewGeneratorType } from '../../../generator';
 
 export interface RegisterViewDtoModel extends RegisterViewArgModel {
-  target: TViewGenerator;
+  target: ViewGeneratorType;
 }

@@ -1,9 +1,9 @@
-import { RegisterViewArgModel } from '../../shared/model/arg/register-view-arg.model';
-import { TViewGenerator } from '../../shared/type/generator.type';
-import { registerViewDtoStore } from '../../shared/store/dto/register-view-dto.store';
+import { RegisterViewArgModel } from '../model/arg/register-view-arg.model';
+import { ViewGeneratorType } from '../../generator';
+import { registerViewDtoStore } from '../store/dto/register-view-dto.store';
 
 export const registerViewDecorator = (arg: RegisterViewArgModel) => {
-  return (target: TViewGenerator) => {
+  return (target: ViewGeneratorType) => {
     registerViewDtoStore.push({ ...arg, target });
   };
 };

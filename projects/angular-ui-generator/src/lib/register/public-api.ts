@@ -1,1 +1,1 @@
-export * from './api/register-view.api';
+export * from './api/register-view';
