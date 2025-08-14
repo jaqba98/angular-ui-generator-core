@@ -1,7 +1,7 @@
-import { TViewGenerator } from '../../shared';
+import { ViewGeneratorAbstract } from '../../shared';
 
 export interface RoutesDomainModel {
   name: string;
-  target: TViewGenerator;
+  target: typeof ViewGeneratorAbstract;
   children: RoutesDomainModel[];
 }

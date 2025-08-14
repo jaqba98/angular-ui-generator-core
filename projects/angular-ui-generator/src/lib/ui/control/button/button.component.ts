@@ -6,5 +6,5 @@ import { ButtonMetadataModel } from '../../model/metadata/button-metadata.model'
   templateUrl: './button.component.html',
 })
 export class ButtonComponent {
-  metadata = input<ButtonMetadataModel>({ label: '' });
+  metadata = input.required<ButtonMetadataModel>();
 }

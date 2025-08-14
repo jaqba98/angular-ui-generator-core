@@ -5,7 +5,7 @@ import { ButtonMetadataModel } from '../model/metadata/button-metadata.model';
 
 @Injectable({ providedIn: 'root' })
 export class ButtonBuilder {
-  build(metadata: ButtonMetadataModel): ButtonBuilderModel {
+  static build(metadata: ButtonMetadataModel): ButtonBuilderModel {
     return {
       component: ButtonComponent,
       metadata,

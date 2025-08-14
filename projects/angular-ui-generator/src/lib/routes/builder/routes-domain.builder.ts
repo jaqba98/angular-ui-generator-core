@@ -1,5 +1,6 @@
 import { RoutesDomainModel } from '../model/routes-domain.model';
-import { registerViewDtoStore, TViewGenerator } from '../../shared';
+import { registerViewDtoStore } from '../../shared/store/dto/register-view-dto.store';
+import { TViewGenerator } from '../../shared/type/generator.type';
 
 export const routesDomainBuilder = (
   view: TViewGenerator,
