@@ -137,24 +137,6 @@
             ],
             "eslintConfig": "projects/demo/eslint.config.js"
           }
-        },
-        "storybook": {
-          "builder": "@storybook/angular:start-storybook",
-          "options": {
-            "configDir": "projects/demo/.storybook",
-            "browserTarget": "demo:build",
-            "compodoc": false,
-            "port": 6006
-          }
-        },
-        "build-storybook": {
-          "builder": "@storybook/angular:build-storybook",
-          "options": {
-            "configDir": "projects/demo/.storybook",
-            "browserTarget": "demo:build",
-            "compodoc": false,
-            "outputDir": "dist/storybook/demo"
-          }
         }
       }
     }
