@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint && prettier . --write",
-    "publish": "cd dist/angular-ui-generator && npm publish"
+    "publish": "cd dist/angular-ui-generator && npm publish",
+    "storybook": "ng run angular-ui-generator:storybook",
+    "build-storybook": "ng run angular-ui-generator:build-storybook"
   },
   "prettier": {
     "overrides": [
@@ -28,16 +30,21 @@
     "@angular/forms": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "@babel/runtime": "^7.28.3",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zone.js": "^0.15.1"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^20.1.0",
     "@angular/build": "^20.1.5",
     "@angular/cli": "^20.1.5",
     "@angular/compiler-cli": "^20.1.0",
+    "@storybook/angular": "^9.1.2",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "20.1.1",
     "eslint": "^9.29.0",
+    "eslint-plugin-storybook": "^9.1.2",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -46,6 +53,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^20.1.0",
     "prettier": "3.6.2",
+    "storybook": "^9.1.2",
     "typescript": "~5.8.2",
     "typescript-eslint": "8.34.1"
   }

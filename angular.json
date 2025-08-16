@@ -36,11 +36,31 @@
             ],
             "eslintConfig": "projects/angular-ui-generator/eslint.config.js"
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/angular-ui-generator/.storybook",
+            "browserTarget": "angular-ui-generator:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/angular-ui-generator/.storybook",
+            "browserTarget": "angular-ui-generator:build",
+            "compodoc": false,
+            "outputDir": "storybook-static"
+          }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": ["angular-eslint"]
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
