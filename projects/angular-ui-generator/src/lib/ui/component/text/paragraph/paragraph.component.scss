@@ -1,0 +1,5 @@
+@use '../../../ui/style/component/text/paragraph';
+
+.paragraph {
+  @include paragraph.paragraph;
+}
