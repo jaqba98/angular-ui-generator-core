@@ -1,4 +1,4 @@
-import { ButtonComponent } from '../component/control/button/button.component';
+import { ButtonComponent } from '../../component/control/basic/button/button.component';
 import { ParagraphComponent } from '../component/text/paragraph/paragraph.component';
 
 export type ButtonComponentType = typeof ButtonComponent;
