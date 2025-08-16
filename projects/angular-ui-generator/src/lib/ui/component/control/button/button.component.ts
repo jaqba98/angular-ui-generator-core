@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ButtonMetadataModel } from '../../model/metadata/button-metadata.model';
+import { ButtonMetadataModel } from '../../../model/metadata/button-metadata.model';
 
 @Component({
   selector: 'lib-ui-component-button',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ParagraphBuilderModel } from '../model/builder/paragraph-builder.model';
-import { ParagraphComponent } from '../component/paragraph/paragraph.component';
+import { ParagraphComponent } from '../component/text/paragraph/paragraph.component';
 
 @Injectable({ providedIn: 'root' })
 export class ParagraphBuilder {

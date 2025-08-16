@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ParagraphMetadataModel } from '../../model/metadata/paragraph-metadata.model';
+import { ParagraphMetadataModel } from '../../../model/metadata/paragraph-metadata.model';
 
 @Component({
   selector: 'lib-ui-component-paragraph',
