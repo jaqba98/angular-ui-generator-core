@@ -1,3 +1,3 @@
 export interface ParagraphMetadataModel {
-  label: string;
+  text: string;
 }

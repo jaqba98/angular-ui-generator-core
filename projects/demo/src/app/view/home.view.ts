@@ -17,6 +17,8 @@ import {
 })
 export class HomeView extends ViewGenerator {
   override generate(): UiElement[] {
-    return [ButtonBuilder.build('Hello')];
+    return [
+      ButtonBuilder.build('Hello')
+    ];
   }
 }

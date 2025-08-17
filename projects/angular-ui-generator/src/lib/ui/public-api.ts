@@ -1,3 +1,3 @@
-export * from './builder/button.builder';
-export * from './builder/paragraph.builder';
+export * from './builder/control/basic/button.builder';
+export * from './builder/text/paragraph.builder';
 export * from './type/ui-element';

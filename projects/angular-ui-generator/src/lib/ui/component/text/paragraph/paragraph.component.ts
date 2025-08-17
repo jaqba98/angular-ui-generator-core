@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
+import { ParagraphMetadataModel } from '../../../model/text/paragraph/paragraph-metadata.model';
 
 @Component({
-  selector: 'lib-component-text-paragraph',
+  selector: 'lib-ui-component-text-paragraph',
   templateUrl: './paragraph.component.html',
   styleUrl: './paragraph.component.scss',
 })
 export class ParagraphComponent {
-  text = input.required<string>();
+  metadata = input.required<ParagraphMetadataModel>();
 }

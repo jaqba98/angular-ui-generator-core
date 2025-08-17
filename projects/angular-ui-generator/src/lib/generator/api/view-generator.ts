@@ -18,7 +18,8 @@ export abstract class ViewGenerator implements AfterViewInit {
     this.viewGenerator.clear();
     this.generate().forEach((uiElement) => {
       const { component, metadata } = uiElement;
-      const newComponent = this.viewGenerator.createComponent(component);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const newComponent = this.viewGenerator.createComponent(component as any);
       newComponent.setInput('metadata', metadata);
     });
   }
