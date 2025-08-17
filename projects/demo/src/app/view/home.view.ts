@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {
   ButtonBuilder,
+  FlexBuilder,
   RegisterView,
   UiElement,
   ViewGenerator,
@@ -18,7 +19,8 @@ import {
 export class HomeView extends ViewGenerator {
   override generate(): UiElement[] {
     return [
-      ButtonBuilder.build('Hello')
+      ButtonBuilder.build('Hello'),
+      FlexBuilder.build()
     ];
   }
 }
