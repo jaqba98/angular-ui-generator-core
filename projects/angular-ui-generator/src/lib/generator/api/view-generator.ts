@@ -15,12 +15,20 @@ export abstract class ViewGenerator implements AfterViewInit {
   viewGenerator!: ViewContainerRef;
 
   ngAfterViewInit() {
-    this.viewGenerator.clear();
-    this.generate().forEach((uiElement) => {
-      const { component, metadata } = uiElement;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const newComponent = this.viewGenerator.createComponent(component as any);
-      newComponent.setInput('metadata', metadata);
+    this.aaa(this.generate(), this.viewGenerator);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  aaa(aa: any[], container: ViewContainerRef) {
+    aa.forEach(i => {
+      const { component, metadata, children } = i;
+      const newComponent = container.createComponent(component);
+      newComponent.setInput('metadata', metadata);      
+      if (children && children.length > 0) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const childContainer = (newComponent.instance as any).viewGenerator;
+        this.aaa(children, childContainer);
+      }
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ViewChild, ViewContainerRef } from '@angular/core';
 import { FlexMetadataModel } from '../../../model/layout/flex/flex-metadata.model';
 
 @Component({
@@ -7,5 +7,8 @@ import { FlexMetadataModel } from '../../../model/layout/flex/flex-metadata.mode
   styleUrl: './flex.component.scss',
 })
 export class FlexComponent {
+  @ViewChild('viewGenerator', { read: ViewContainerRef, static: true })
+  viewGenerator!: ViewContainerRef;
+  
   metadata = input.required<FlexMetadataModel>();
 }
