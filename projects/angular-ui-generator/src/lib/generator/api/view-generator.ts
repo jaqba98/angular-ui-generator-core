@@ -20,10 +20,10 @@ export abstract class ViewGenerator implements AfterViewInit {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   aaa(aa: any[], container: ViewContainerRef) {
-    aa.forEach(i => {
+    aa.forEach((i) => {
       const { component, metadata, children } = i;
       const newComponent = container.createComponent(component);
-      newComponent.setInput('metadata', metadata);      
+      newComponent.setInput('metadata', metadata);
       if (children && children.length > 0) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const childContainer = (newComponent.instance as any).viewGenerator;

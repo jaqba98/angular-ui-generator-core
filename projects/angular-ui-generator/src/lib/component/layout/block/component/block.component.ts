@@ -1,14 +1,16 @@
-// import { Component, input, ViewChild, ViewContainerRef } from '@angular/core';
-// import { FlexMetadataModel } from '../../../model/layout/flex/flex-metadata.model';
+import { Component, input, ViewChild, ViewContainerRef } from '@angular/core';
+import { BlockTagEnum } from '../enum/block-tag.enum';
+import { BlockMetadataModel } from '../model/block-metadata.model';
 
-// @Component({
-//   selector: 'lib-ui-component-layout-flex',
-//   templateUrl: './flex.component.html',
-//   styleUrl: './flex.component.scss',
-// })
-// export class FlexComponent {
-//   @ViewChild('viewGenerator', { read: ViewContainerRef, static: true })
-//   viewGenerator!: ViewContainerRef;
-  
-//   metadata = input.required<FlexMetadataModel>();
-// }
+@Component({
+  selector: 'lib-component-layout-block',
+  templateUrl: './block.component.html',
+})
+export class BlockComponent {
+  @ViewChild('container', { read: ViewContainerRef, static: true })
+  container!: ViewContainerRef;
+
+  BlockTagEnum = BlockTagEnum;
+
+  metadata = input.required<BlockMetadataModel>();
+}

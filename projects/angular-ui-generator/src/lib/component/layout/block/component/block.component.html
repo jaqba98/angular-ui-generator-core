@@ -1,1 +1,7 @@
-<!-- <ng-container #viewGenerator></ng-container> -->
+@switch (metadata().tag) {
+  @case (BlockTagEnum.div) {
+    <div>
+      <ng-container #container></ng-container>
+    </div>
+  }
+}

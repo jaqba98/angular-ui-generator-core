@@ -1,2 +1,5 @@
-// // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-// export interface FlexMetadataModel {}
+import { BlockTagEnum } from '../enum/block-tag.enum';
+
+export interface BlockMetadataModel {
+  tag: BlockTagEnum;
+}

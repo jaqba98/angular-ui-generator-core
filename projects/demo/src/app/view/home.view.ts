@@ -24,11 +24,11 @@ export class HomeView extends ViewGenerator {
         ButtonBuilder.build('Hello2'),
         FlexBuilder.build([
           ButtonBuilder.build('Hello3'),
-          ButtonBuilder.build('Hello4')
+          ButtonBuilder.build('Hello4'),
         ]),
         ButtonBuilder.build('Hello5'),
-        ButtonBuilder.build('Hello6')
-      ])
+        ButtonBuilder.build('Hello6'),
+      ]),
     ];
   }
 }
