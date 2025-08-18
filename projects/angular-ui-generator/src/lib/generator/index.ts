@@ -1,1 +1,1 @@
-export * from './type/generator.type';
+export * from './api/view-generator';

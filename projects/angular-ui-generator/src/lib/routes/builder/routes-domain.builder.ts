@@ -1,9 +1,9 @@
-import { ViewGeneratorType } from '../../generator';
 import { RoutesDomainModel } from '../model/routes-domain.model';
 import { registerViewDtoStore } from '../../register';
+import { ViewGenerator } from '../../generator';
 
 export const routesDomainBuilder = (
-  view: ViewGeneratorType,
+  view: typeof ViewGenerator,
 ): RoutesDomainModel => {
   const viewDto = registerViewDtoStore.find(
     (viewDto) => viewDto.target === view,

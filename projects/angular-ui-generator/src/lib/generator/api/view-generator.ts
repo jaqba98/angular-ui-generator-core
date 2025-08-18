@@ -1,36 +1,53 @@
 import {
   AfterViewInit,
   Component,
+  input,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { UiElement } from '../../ui';
+import { UiElement, UiElementKindEnum } from '../../ui-element';
 
 @Component({
   selector: 'lib-generator-api-view-generator',
-  template: '',
+  template: '<ng-container #container></ng-container>',
 })
-export abstract class ViewGenerator implements AfterViewInit {
-  @ViewChild('viewGenerator', { read: ViewContainerRef })
-  viewGenerator!: ViewContainerRef;
+export class ViewGenerator implements AfterViewInit {
+  @ViewChild('container', { read: ViewContainerRef })
+  container!: ViewContainerRef;
+
+  uiElements = input.required<UiElement[]>();
 
   ngAfterViewInit() {
-    this.aaa(this.generate(), this.viewGenerator);
+    this.generate(this.uiElements(), this.container);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  aaa(aa: any[], container: ViewContainerRef) {
-    aa.forEach((i) => {
-      const { component, metadata, children } = i;
-      const newComponent = container.createComponent(component);
-      newComponent.setInput('metadata', metadata);
-      if (children && children.length > 0) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const childContainer = (newComponent.instance as any).viewGenerator;
-        this.aaa(children, childContainer);
+  generate(uiElements: UiElement[], container: ViewContainerRef) {
+    uiElements.forEach((uiElement) => {
+      const { kind } = uiElement;
+
+      switch (kind) {
+        case UiElementKindEnum.button: {
+          const { component, metadata } = uiElement;
+          const newComponent = container.createComponent(component);
+          newComponent.setInput('metadata', metadata);
+          break;
+        }
+        case UiElementKindEnum.block: {
+          const { component, children } = uiElement;
+          const newComponent = container.createComponent(component);
+          const childContainer = newComponent.instance.container;
+          this.generate(children, childContainer);
+          break;
+        }
+        case UiElementKindEnum.paragraph: {
+          const { component, metadata } = uiElement;
+          const newComponent = container.createComponent(component);
+          newComponent.setInput('metadata', metadata);
+          break;
+        }
+        default:
+          throw new Error('Not supported kind');
       }
     });
   }
-
-  abstract generate(): UiElement[];
 }
