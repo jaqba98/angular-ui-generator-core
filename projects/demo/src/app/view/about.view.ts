@@ -25,6 +25,16 @@ export class AboutView extends AugViewGenerator {
         kind: 'paragraph',
         text: 'This is about page',
       },
+      {
+        kind: 'link',
+        path: '/home',
+        text: 'Home',
+      },
+      {
+        kind: 'link',
+        path: '/about',
+        text: 'About',
+      },
     ];
   }
 }

@@ -14,6 +14,7 @@ a user interface. You can use TypeScript only to create a user interface.
 - [Generator](#generator)
   - [AugViewGenerator](#augviewgenerator)
   - [AugViewMetadata](#augviewmetadata)
+    - [Link](#link)
     - [Button](#button)
     - [Block](#block)
     - [Paragraph](#paragraph)
@@ -124,6 +125,20 @@ export class HelloWorldView extends AugViewGenerator {
 ### AugViewMetadata
 
 Below there are all the possible metadata objects that you can use to define the structure of your view.
+
+> ### Link
+>
+> #### Metadata object for a link:
+>
+> ```typescript
+> [
+>   {
+>     kind: "link", // Specifies that the metadata object is a link.
+>     path: "/home", // The path to navigate to when the link is clicked.
+>     text: "Click me!", // The text displayed on the link.
+>   },
+> ];
+> ```
 
 > ### Button
 >

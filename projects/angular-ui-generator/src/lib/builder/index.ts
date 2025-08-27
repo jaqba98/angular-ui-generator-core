@@ -1,3 +1,4 @@
+export * from './component/common/link/link.builder';
 export * from './component/control/basic/button/button.builder';
 export * from './component/layout/block/block.builder';
 export * from './component/text/paragraph/paragraph.builder';

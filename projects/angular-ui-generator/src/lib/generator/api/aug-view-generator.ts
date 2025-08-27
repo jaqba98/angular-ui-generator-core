@@ -5,7 +5,12 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { AugViewMetadata } from '../type/aug-view-metadata';
-import { BlockBuilder, ButtonBuilder, ParagraphBuilder } from '../../builder';
+import {
+  BlockBuilder,
+  ButtonBuilder,
+  LinkBuilder,
+  ParagraphBuilder,
+} from '../../builder';
 
 @Component({
   selector: 'aug-view-generator',
@@ -13,6 +18,7 @@ import { BlockBuilder, ButtonBuilder, ParagraphBuilder } from '../../builder';
 })
 export abstract class AugViewGenerator implements AfterViewInit {
   private readonly viewContainerRef = inject(ViewContainerRef);
+  private readonly linkBuilder = inject(LinkBuilder);
   private readonly buttonBuilder = inject(ButtonBuilder);
   private readonly blockBuilder = inject(BlockBuilder);
   private readonly paragraphBuilder = inject(ParagraphBuilder);
@@ -30,6 +36,10 @@ export abstract class AugViewGenerator implements AfterViewInit {
     augViewMetadata.forEach((metadata) => {
       const { kind } = metadata;
       switch (kind) {
+        case 'link': {
+          this.linkBuilder.build(container, metadata);
+          break;
+        }
         case 'button': {
           this.buttonBuilder.build(container, metadata);
           break;

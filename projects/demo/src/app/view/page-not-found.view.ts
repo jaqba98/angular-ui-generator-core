@@ -25,6 +25,16 @@ export class PageNotFoundView extends AugViewGenerator {
         kind: 'paragraph',
         text: 'This is page not found page',
       },
+      {
+        kind: 'link',
+        path: '/home',
+        text: 'Home',
+      },
+      {
+        kind: 'link',
+        path: '/about',
+        text: 'About',
+      },
     ];
   }
 }

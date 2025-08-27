@@ -1,0 +1,5 @@
+@use "../../../style/component/common/link";
+
+.link {
+  @include link.build-link;
+}
