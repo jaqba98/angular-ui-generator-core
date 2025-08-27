@@ -1,4 +1,4 @@
-import {Injectable, ViewContainerRef} from '@angular/core';
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { ParagraphMetadataModel } from './paragraph-metadata.model';
 import { ParagraphComponent } from '../../../../component';
 

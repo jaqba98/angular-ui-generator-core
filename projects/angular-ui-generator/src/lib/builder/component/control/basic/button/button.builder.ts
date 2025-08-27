@@ -1,4 +1,4 @@
-import {Injectable, ViewContainerRef} from '@angular/core';
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { ButtonMetadataModel } from './button-metadata.model';
 import { ButtonComponent } from '../../../../../component';
 

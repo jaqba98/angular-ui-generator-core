@@ -1,4 +1,4 @@
-import {Injectable, ViewContainerRef} from '@angular/core';
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { BlockMetadataModel } from './block-metadata.model';
 import { BlockComponent } from '../../../../component';
 
