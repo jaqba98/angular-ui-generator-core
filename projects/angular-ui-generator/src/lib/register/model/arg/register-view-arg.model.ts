@@ -1,6 +1,6 @@
-import { ViewGenerator } from '../../../generator';
+import { ViewGeneratorType } from '../../../generator';
 
 export interface RegisterViewArgModel {
   name: string;
-  children?: (typeof ViewGenerator)[];
+  children: ViewGeneratorType[];
 }

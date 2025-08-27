@@ -1,33 +1,30 @@
 import { Component } from '@angular/core';
 import {
-  RegisterView,
-  ViewGenerator,
-  UiElement,
-  BlockBuilder,
-  ButtonBuilder,
+  AugRegisterView,
+  AugRegisterRoute,
+  AugViewGenerator,
+  AugViewMetadata,
 } from '../../../../angular-ui-generator/src/public-api';
 
 @Component({
   selector: 'app-home-view',
-  template:
-    '<lib-generator-api-view-generator [uiElements]="uiElements"></lib-generator-api-view-generator>',
-  imports: [ViewGenerator],
+  template: '',
 })
-@RegisterView({
+@AugRegisterView({
   name: 'home',
   children: [],
 })
-export class HomeView {
-  uiElements: UiElement[] = [
-    BlockBuilder.build([
-      ButtonBuilder.build('Hello1'),
-      ButtonBuilder.build('Hello2'),
-      BlockBuilder.build([
-        ButtonBuilder.build('Hello3'),
-        ButtonBuilder.build('Hello4'),
-      ]),
-      ButtonBuilder.build('Hello5'),
-      ButtonBuilder.build('Hello6'),
-    ]),
-  ];
+@AugRegisterRoute({
+  path: 'home',
+  title: 'Home',
+})
+export class HomeView extends AugViewGenerator {
+  override buildViewMetadata(): AugViewMetadata[] {
+    return [
+      {
+        kind: 'paragraph',
+        text: 'This is home page',
+      },
+    ];
+  }
 }

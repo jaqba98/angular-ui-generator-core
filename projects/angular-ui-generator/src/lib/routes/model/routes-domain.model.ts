@@ -1,7 +1,7 @@
-import { ViewGenerator } from '../../generator';
+import { RegisterRouteDtoModel, RegisterViewDtoModel } from '../../register';
 
 export interface RoutesDomainModel {
-  name: string;
-  target: typeof ViewGenerator;
+  route: RegisterRouteDtoModel;
+  view: RegisterViewDtoModel;
   children: RoutesDomainModel[];
 }

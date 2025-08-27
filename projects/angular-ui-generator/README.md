@@ -1,145 +1,172 @@
 # Angular UI Generator
 
-`angular-ui-generator` is a powerful Angular tool designed to simplify the process of building UI elements dynamically within your Angular applications. This documentation provides a comprehensive guide on how to set up, use, and configure the tool.
+This project is an Angular UI generator that helps you create user interfaces quickly and efficiently.
+It provides a way to generate a user interface from metadata. Metadata is a JSON-like structure that
+describes how to generate a user interface. You do not have to use HTML and CSS anymore to create
+a user interface. You can use TypeScript only to create a user interface.
 
----
+## Table of contents
 
-## Table of Contents
+- [Register](#register)
+  - [AugRegisterRoute](#augregisterroute)
+  - [AugRegisterView](#augregisterview)
+- [Routes](#routes)
+- [Generator](#generator)
+  - [AugViewGenerator](#augviewgenerator)
+  - [AugViewMetadata](#augviewmetadata)
+    - [Button](#button)
+    - [Block](#block)
+    - [Paragraph](#paragraph)
 
-1. [Installation](#installation)
-2. [Creating a Standard Angular Project](#creating-a-standard-angular-project)
-3. [Setting Up Angular UI Generator](#setting-up-angular-ui-generator)
-4. [Defining Views](#defining-views)
-5. [Available UI Components](#available-ui-components)
-6. [App Configuration](#app-configuration)
-7. [Example](#example)
+## Register
 
----
+### AugRegisterRoute
 
-## Installation
+This is a TypeScript decorator that you can use to add additional metadata to the angular components.
+This decorator describes how the component should be treated by the `augRouteGenerator()`.
 
-To install the `angular-ui-generator`, run the following command:
+> **WARNING** The component must be decorated with `@Component()` decorator.
 
-```bash
-npm install angular-ui-generator
-```
-
----
-
-## Creating a Standard Angular Project
-
-Start by generating a standard Angular project using Angular CLI:
-
-```bash
-ng new my-app
-cd my-app
-```
-
----
-
-## Setting Up Angular UI Generator
-
-Once your Angular project is ready, install the generator:
-
-```bash
-npm install angular-ui-generator
-```
-
-Now you can start designing your application dynamically using the generator.
-
----
-
-## Defining Views
-
-Views are the foundation of your application UI. Each view corresponds to a specific route in your Angular application.
-
-### Example View Component
+Example:
 
 ```typescript
-import { Component } from "@angular/core";
-import { RegisterView, ViewGenerator, UiElement, ButtonBuilder, ParagraphBuilder } from "angular-ui-generator";
-import { BViewComponent, CViewComponent } from "./child-views";
-
 @Component({
-  selector: "a-view",
-  template: "<ng-container #viewGenerator></ng-container>",
+  selector: "home",
+  template: "",
 })
-@RegisterView({
-  name: "a",
-  children: [BViewComponent, CViewComponent],
+@AugRegisterRoute({
+  path: "home",
+  title: "Home",
 })
-export class AViewComponent extends ViewGenerator {
-  override generate(): UiElement[] {
-    return [ButtonBuilder.build("button1"), ParagraphBuilder.build("paragraph1"), ButtonBuilder.build("button2")];
-  }
+export class HomeComponent {
+  // content
 }
 ```
 
-### Explanation
+Possible `AugRegisterRoute` options:
 
-- **`@Component` decorator**: Required by Angular.
-- **`@RegisterView` decorator**: Marks the component as a view and defines its route and children.
-- **`ViewGenerator` inheritance**: Required to access the `generate` method.
-- **`generate()` method**: Returns an array of UI elements that will be rendered in the view.
+```
+{
+  path?: string, // The route path for the Angular component.
+  redirectTo?: string, // Path to redirect to instead of rendering this component.
+  title?: string, // Title for the route, used in navigation or page metadata.
+}
+```
 
----
+### AugRegisterView
 
-## Available UI Components
+This is a TypeScript decorator that you can use to add additional metadata to the angular components.
+This decorator describes the hierarchy structure of views, and it will be used by the `augRouteGenerator()`.
 
-Currently, the following UI components are available for dynamic generation:
+> **WARNING** The component must be decorated with `@Component()` decorator.
 
-- `ButtonBuilder.build(label: string)`
-- `ParagraphBuilder.build(label: string)`
-
----
-
-## App Configuration
-
-To make your views functional, configure your app router in `app.config.ts`:
+Example:
 
 ```typescript
-import { ApplicationConfig } from "@angular/core";
-import { provideRouter } from "@angular/router";
-import { routesGenerator } from "angular-ui-generator";
-import { AViewComponent } from "./views/a-view.component";
+@Component({
+  selector: "home",
+  template: "",
+})
+@AugRegisterView({
+  name: "home-view",
+  children: [],
+})
+export class HomeComponent {
+  // content
+}
+```
 
+Possible `AugRegisterView` options:
+
+```
+{
+  name: string, // Name of the view.
+  children: ViewGeneratorType[], // Children of the current view.
+}
+```
+
+## Routes
+
+The `augRoutes()` method is used to automatically generate routes for the Angular application.
+As a parameter, you can pass an array of root views.
+
+Example:
+
+```typescript
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routesGenerator(AViewComponent))],
+  providers: [provideRouter(augRoutes(HomeView, AboutView))],
 };
 ```
 
-### Explanation
+## Generator
 
-- **`provideRouter`**: Angular router provider.
-- **`routesGenerator`**: Generates all routes dynamically from your root view component.
+### AugViewGenerator
 
----
+To generate a view, you need to extend the `AugViewGenerator` class and implement the `buildViewMetadata` method.
+This method should return an array of `AugViewMetadata` objects that define the structure and content of the view.
+The `AugViewMetadata[]` defines the metadata structure of the view.
 
-## Example Usage
-
-Imagine an app with a simple homepage and nested child views:
-
-- Root View: `HomeViewComponent`
-- Children: `AboutViewComponent`, `ContactViewComponent`
+Example:
 
 ```typescript
-@Component({
-  selector: "home-view",
-  template: "<ng-container #viewGenerator></ng-container>",
-})
-@RegisterView({
-  name: "home",
-  children: [AboutViewComponent, ContactViewComponent],
-})
-export class HomeViewComponent extends ViewGenerator {
-  override generate(): UiElement[] {
-    return [ButtonBuilder.build("Get Started"), ParagraphBuilder.build("Welcome to our app!")];
+export class HelloWorldView extends AugViewGenerator {
+  override buildViewMetadata(): AugViewMetadata[] {
+    return [
+      {
+        kind: "text",
+        text: "Hello World",
+      },
+    ];
   }
 }
 ```
 
-This setup will generate a homepage with a "Get Started" button and a welcome paragraph, while also providing nested routes for the `About` and `Contact` views.
+### AugViewMetadata
 
----
+Below there are all the possible metadata objects that you can use to define the structure of your view.
 
-With this configuration, your Angular project is ready to dynamically generate UI components using `angular-ui-generator`.
+> ### Button
+>
+> #### Metadata object for a button:
+>
+> ```typescript
+> [
+>   {
+>     kind: "button", // Specifies that the metadata object is a button.
+>     label: "Click me!", // The label displayed on the button.
+>   },
+> ];
+> ```
+
+> ### Block
+>
+> #### Metadata object for a block:
+>
+> ```typescript
+> [
+>   {
+>     kind: "block", // Specifies that the metadata object is a block.
+>     tag: "div", // HTML tag to use when creating a block.
+>     children: [], // Array of metadata objects to be nested inside the block.
+>   },
+> ];
+> ```
+>
+> Possible values for `tag` property:
+>
+> - `div`
+> - `header`
+> - `footer`
+
+> ### Paragraph
+>
+> #### Metadata object for a paragraph:
+>
+> ```typescript
+> [
+>   {
+>     kind: "paragraph", // Specifies that the metadata object is a paragraph.
+>     text: "Hello world", // The text displayed on the paragraph.
+>   },
+> ];
+> ```

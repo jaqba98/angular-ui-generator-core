@@ -1,0 +1,5 @@
+@use "../../../style/component/layout/block";
+
+.block {
+  @include block.build-block;
+}
