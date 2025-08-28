@@ -17,6 +17,7 @@ a user interface. You can use TypeScript only to create a user interface.
     - [Link](#link)
     - [Button](#button)
     - [Div](#div)
+    - [Header](#header)
     - [Paragraph](#paragraph)
 
 ## Register
