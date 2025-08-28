@@ -22,18 +22,28 @@ export class HomeView extends AugViewGenerator {
   override buildViewMetadata(): AugViewMetadata[] {
     return [
       {
-        kind: 'paragraph',
-        text: 'This is home page',
+        kind: 'header',
+        children: [
+          {
+            kind: 'paragraph',
+            text: 'This is home page',
+          },
+        ],
       },
       {
-        kind: 'link',
-        path: '/home',
-        text: 'Home',
-      },
-      {
-        kind: 'link',
-        path: '/about',
-        text: 'About',
+        kind: 'div',
+        children: [
+          {
+            kind: 'link',
+            path: '/home',
+            text: 'Home',
+          },
+          {
+            kind: 'link',
+            path: '/about',
+            text: 'About',
+          },
+        ],
       },
     ];
   }

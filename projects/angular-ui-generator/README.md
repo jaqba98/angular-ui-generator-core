@@ -16,7 +16,7 @@ a user interface. You can use TypeScript only to create a user interface.
   - [AugViewMetadata](#augviewmetadata)
     - [Link](#link)
     - [Button](#button)
-    - [Block](#block)
+    - [Div](#div)
     - [Paragraph](#paragraph)
 
 ## Register
@@ -153,25 +153,31 @@ Below there are all the possible metadata objects that you can use to define the
 > ];
 > ```
 
-> ### Block
+> ### Div
 >
-> #### Metadata object for a block:
+> #### Metadata object for a div:
 >
 > ```typescript
 > [
 >   {
->     kind: "block", // Specifies that the metadata object is a block.
->     tag: "div", // HTML tag to use when creating a block.
+>     kind: "div", // Specifies that the metadata object is a div.
 >     children: [], // Array of metadata objects to be nested inside the block.
 >   },
 > ];
 > ```
+
+> ### Header
 >
-> Possible values for `tag` property:
+> #### Metadata object for a header:
 >
-> - `div`
-> - `header`
-> - `footer`
+> ```typescript
+> [
+>   {
+>     kind: "header", // Specifies that the metadata object is a header.
+>     children: [], // Array of metadata objects to be nested inside the block.
+>   },
+> ];
+> ```
 
 > ### Paragraph
 >

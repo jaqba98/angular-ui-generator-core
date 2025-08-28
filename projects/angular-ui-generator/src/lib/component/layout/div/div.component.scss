@@ -1,0 +1,5 @@
+@use "../../../style/component/layout/div";
+
+.div {
+  @include div.build-div;
+}

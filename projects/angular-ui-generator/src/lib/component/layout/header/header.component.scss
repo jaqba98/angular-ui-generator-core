@@ -1,0 +1,5 @@
+@use "../../../style/component/layout/header";
+
+.header {
+  @include header.build-header;
+}

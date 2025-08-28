@@ -6,8 +6,9 @@ import {
 } from '@angular/core';
 import { AugViewMetadata } from '../type/aug-view-metadata';
 import {
-  BlockBuilder,
   ButtonBuilder,
+  DivBuilder,
+  HeaderBuilder,
   LinkBuilder,
   ParagraphBuilder,
 } from '../../builder';
@@ -20,7 +21,8 @@ export abstract class AugViewGenerator implements AfterViewInit {
   private readonly viewContainerRef = inject(ViewContainerRef);
   private readonly linkBuilder = inject(LinkBuilder);
   private readonly buttonBuilder = inject(ButtonBuilder);
-  private readonly blockBuilder = inject(BlockBuilder);
+  private readonly divBuilder = inject(DivBuilder);
+  private readonly headerBuilder = inject(HeaderBuilder);
   private readonly paragraphBuilder = inject(ParagraphBuilder);
 
   abstract buildViewMetadata(): AugViewMetadata[];
@@ -44,8 +46,16 @@ export abstract class AugViewGenerator implements AfterViewInit {
           this.buttonBuilder.build(container, metadata);
           break;
         }
-        case 'block': {
-          const { component, children } = this.blockBuilder.build(
+        case 'div': {
+          const { component, children } = this.divBuilder.build(
+            container,
+            metadata,
+          );
+          this.generate(children, component.instance.container);
+          break;
+        }
+        case 'header': {
+          const { component, children } = this.headerBuilder.build(
             container,
             metadata,
           );
