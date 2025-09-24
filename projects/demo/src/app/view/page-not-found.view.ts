@@ -4,7 +4,7 @@ import {
   AugRegisterRoute,
   AugViewGenerator,
   AugViewMetadata,
-} from '../../../../angular-ui-generator/src/public-api';
+} from '../../../../angular-ui-generator-core/src/public-api';
 
 @Component({
   selector: 'app-page-not-found-view',

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { augRoutes } from '../../../angular-ui-generator/src/public-api';
+import { augRoutes } from '../../../angular-ui-generator-core/src/public-api';
 import { RootView } from './view/root.view';
 import { HomeView } from './view/home.view';
 import { AboutView } from './view/about.view';

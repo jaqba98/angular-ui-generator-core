@@ -3,20 +3,20 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-ui-generator": {
+    "angular-ui-generator-core": {
       "projectType": "library",
-      "root": "projects/angular-ui-generator",
-      "sourceRoot": "projects/angular-ui-generator/src",
+      "root": "projects/angular-ui-generator-core",
+      "sourceRoot": "projects/angular-ui-generator-core/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "configurations": {
             "production": {
-              "tsConfig": "projects/angular-ui-generator/tsconfig.lib.prod.json"
+              "tsConfig": "projects/angular-ui-generator-core/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/angular-ui-generator/tsconfig.lib.json"
+              "tsConfig": "projects/angular-ui-generator-core/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -24,17 +24,17 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "tsConfig": "projects/angular-ui-generator/tsconfig.spec.json"
+            "tsConfig": "projects/angular-ui-generator-core/tsconfig.spec.json"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/angular-ui-generator/**/*.ts",
-              "projects/angular-ui-generator/**/*.html"
+              "projects/angular-ui-generator-core/**/*.ts",
+              "projects/angular-ui-generator-core/**/*.html"
             ],
-            "eslintConfig": "projects/angular-ui-generator/eslint.config.js"
+            "eslintConfig": "projects/angular-ui-generator-core/eslint.config.js"
           }
         }
       }
@@ -65,7 +65,7 @@
             ],
             "styles": [
               "projects/demo/src/styles.scss",
-              "projects/angular-ui-generator/src/lib/style/main.scss"
+              "projects/angular-ui-generator-core/src/lib/style/main.scss"
             ]
           },
           "configurations": {

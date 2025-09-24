@@ -5,7 +5,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "angular-ui-generator": ["./dist/angular-ui-generator"]
+      "angular-ui-generator-core": ["./dist/angular-ui-generator-core"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -29,10 +29,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/angular-ui-generator/tsconfig.lib.json"
+      "path": "./projects/angular-ui-generator-core/tsconfig.lib.json"
     },
     {
-      "path": "./projects/angular-ui-generator/tsconfig.spec.json"
+      "path": "./projects/angular-ui-generator-core/tsconfig.spec.json"
     },
     {
       "path": "./projects/demo/tsconfig.app.json"
