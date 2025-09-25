@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint && prettier . --write",
-    "publish": "cd dist/angular-ui-generator-core && npm publish"
+    "publish": "cd dist/angular-ui-generator-core && npm publish --access public"
   },
   "prettier": {
     "overrides": [
